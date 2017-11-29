@@ -21,8 +21,11 @@ var name;
 var room;
 var joinUser;
 var joinRoom;
+//new var
 var listOnline;
+//new var
 var listRoom;
+//new var
 var hostOfRoom;
 window.onbeforeunload = function() {
 	ws.close();
@@ -125,16 +128,19 @@ ws.onmessage = function(message) {
 	    var newChild = '<div name="'+joinUser+'" class="card w-10 well"><div class="card-block"><h3 class="card-title">'+joinUser+' want talk with you</h3><div class="OkCe"><input type="button" class="btn btn-info" onmouseup="acceptJoin(\'' + userJoin + '\');" value="OK"><input type="button" class="btn btn-warning" onmouseup="cancel(\'' + userJoin + '\');" value="Cancel"></div></div></div>';
         parent.insertAdjacentHTML('beforeend', newChild);
 	    break;
+	//new function
 	case 'getListOnline':
         listOnline = parsedMessage.listOnline;
         console.log("list online");
         console.log(listOnline);
 	    break;
+	//new function
 	case 'getListRoom':
          listRoom = parsedMessage.listRoom;
          console.log("list room");
          console.log(listRoom);
     	 break;
+    //new function
     case 'getHostOfRoom':
         hostOfRoom = parsedMessage.hostOfRoom;
         console.log("host of room");
@@ -364,6 +370,8 @@ function sendMessage(message) {
 function nameButton(){
     return "chiennv";
 }
+
+//new function
 function getListOnline(){
     sendMessage({
            	id : 'getListOnline'
@@ -374,14 +382,10 @@ function cancel(){
     document.getElementsByName(userJoin)[0].style.display = 'none';
     console.log(userJoin);
 }
-
+//new function
 function getListRoom(){
     sendMessage({
        	id : 'getListRoom'
     });
 }
-function getHostOfRoom(){
-    sendMessage({
-       	id : 'getHostOfRoom'
-    });
-}
+
